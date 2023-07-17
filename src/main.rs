@@ -1,5 +1,5 @@
 use std::collections::VecDeque;
-use std::net::TcpStream;
+// use std::net::TcpStream;
 use std::sync::{Arc, Mutex};
 use std::thread::{sleep, spawn};
 use std::time::Duration;
@@ -32,12 +32,12 @@ fn main() {
                                      "EEE".to_string(), "FFF".to_string(), "GGG".to_string(), "HHH".to_string(),
                                      "III".to_string(), "JJJ".to_string()];
     let thread2 = spawn(move || {
-        println!("start enqueue thread")
+        println!("start enqueue thread");
         for i in elements {
             {
                 let mut q = cloned2.lock().unwrap();
                 let br = &i;
-                q.push_back(i);
+                q.push_back(br.to_string());
                 println!("push {}", br);
             }
             sleep(Duration::from_secs(2));
